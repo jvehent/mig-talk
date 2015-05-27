@@ -32,13 +32,30 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h1>MIG<br /><span style="color: #CC5600;">M</span>ozilla <span style="color: #CC5600;">I</span>nvesti<span style="color: #CC5600;">G</span>ator</h1>
+                    <h1><span style="color: #CC5600;">MIG</span><br /><span style="color: #CC5600;">M</span>ozilla <span style="color: #CC5600;">I</span>nvesti<span style="color: #CC5600;">G</span>ator</h1>
                     <img src="statics/mig-logo-transparent.png" width="70%"/>
 					<h3>Distributed and Real-Time Digital Forensics at the Speed of the Cloud</h3>
 					<p>
 						<small><a href="https://jve.linuxwall.info">Julien Vehent</a> / <a href="http://twitter.com/jvehent">@jvehent</a></small>
 					</p>
 				</section>
+
+                <section>
+                    <h2>That unfortunate commit...</h2>
+                    <span class="fragment">
+                        <p>git commit -a . &amp;&amp; git push github master</p>
+                    </span>
+                    <span class="fragment">
+                        <img src="statics/githubfail.png" width="100%"/>
+                    </span>
+                    <span class="fragment">
+                        <img src="statics/fail.png" width="30%"/>
+                    </span>
+                    <span class="fragment">
+                        <p>$ mig file -path / -name "^\.boto$" -content "key_sample" -size "&lt;1k" -maxdepth 5</p>
+                    </span>
+                    
+                </section>
 
                 <section>
                     <h2><span style="color: #CC5600;">Julien Vehent</span>, <a href="https://wiki.mozilla.org/Security/OpSec">Operations Security</a></h2>
@@ -48,7 +65,7 @@
                                 <td>
                                     <ul>
                                         <li>we respond to security investigations and incidents</li>
-                                        <li>we help projects design and implement security controls</li>
+                                        <li>we help developers design and implement security controls</li>
                                         <li>we build tools &amp; services to keep Mozilla secure</li>
                                     </ul>
                                 </td><td>
@@ -68,289 +85,213 @@
                     </p>
 				</section>
 
-                <section>
-                    <h2>...but for that, we need servers!</h2>
+				<section>
+					<h2>Strong startup/incubator mindset</h2>
                     <p>
                         <ul>
-                            <li>10 offices, 2 datacenters, ~30 AWS accounts</li>
-                            <li>400+ active web{sites,services}, constantly changing</li>
-                            <li>thousands of Linux servers, hundreds MacOS &amp; Windows</li>
-                            <li>worldwide presence, minimal centralization</li>
+                            <li>Experiment &amp; fail fast</li>
+                            <li>Minimalistic centralization</li>
+                            <li>Everyone can write and host a website...</li>
+                            <li>...sometimes using operational standards</li>
                         </ul>
-                    <p>
+                    </p>
+				</section>
+
+                <section>
+                    <h2>Who needs an internal network</h2>
+                    <h3>when you have the Internet right there!</h3>
+                        <ul>
+                            <li>400+ active websites &amp; services</li>
+                            <li>a dozen offices, hundreds of remotees</li>
+                            <li>2 datacenters, tons of AWS accounts, heroku, rackspace, ...</li>
+                        </ul>
+                        <p>all loosely connected only when needed</p>
                 </section>
 
 				<section>
-                    <h2>A typical investigation at Mozilla</h2>
+                    <h2>The practice of Incident Response<br />at Mozilla</h2>
                     <p><img src="statics/haystack.jpg" width="80%" /></p>
 				</section>
 
-				<section>
-					<h2>Point of View</h2>
-					<p>
-						Press <strong>ESC</strong> to enter the slide overview.
-					</p>
-					<p>
-						Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
-					</p>
-				</section>
+                <section>
+                    <h2>OpSec @ Mozilla</h2>
+                    <p><img src="statics/opsec_venn.png" width="60%" /></p>
+                </section>
 
 				<section>
-					<h2>Touch Optimized</h2>
-					<p>
-						Presentations look great on touch devices, like mobile phones and tablets. Simply swipe through your slides.
-					</p>
-				</section>
-
-				<section data-markdown>
-					<script type="text/template">
-						## Markdown support
-
-						Write content using inline or external Markdown.
-						Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
-
-						```
-						<section data-markdown>
-						  ## Markdown support
-
-						  Write content using inline or external Markdown.
-						  Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
-						</section>
-						```
-					</script>
-				</section>
-
-				<section>
-					<section id="fragments">
-						<h2>Fragments</h2>
-						<p>Hit the next arrow...</p>
-						<p class="fragment">... to step through ...</p>
-						<p><span class="fragment">... a</span> <span class="fragment">fragmented</span> <span class="fragment">slide.</span></p>
-
-						<aside class="notes">
-							This slide has fragments which are also stepped through in the notes window.
-						</aside>
-					</section>
-					<section>
-						<h2>Fragment Styles</h2>
-						<p>There's different types of fragments, like:</p>
-						<p class="fragment grow">grow</p>
-						<p class="fragment shrink">shrink</p>
-						<p class="fragment roll-in">roll-in</p>
-						<p class="fragment fade-out">fade-out</p>
-						<p class="fragment current-visible">current-visible</p>
-						<p class="fragment highlight-red">highlight-red</p>
-						<p class="fragment highlight-blue">highlight-blue</p>
-					</section>
-				</section>
-
-				<section id="transitions">
-					<h2>Transition Styles</h2>
-					<p>
-						You can select from different transitions, like: <br>
-						<a href="?transition=none#/transitions">None</a> -
-						<a href="?transition=fade#/transitions">Fade</a> -
-						<a href="?transition=slide#/transitions">Slide</a> -
-						<a href="?transition=convex#/transitions">Convex</a> -
-						<a href="?transition=concave#/transitions">Concave</a> -
-						<a href="?transition=zoom#/transitions">Zoom</a>
-					</p>
-				</section>
-				<section>
-					<section data-background="#dddddd">
-						<h2>Slide Backgrounds</h2>
-						<p>
-							Set <code>data-background="#dddddd"</code> on a slide to change the background color. All CSS color formats are supported.
-						</p>
-						<a href="#" class="navigate-down">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png">
-						<h2>Image Backgrounds</h2>
-						<pre><code>&lt;section data-background="image.png"&gt;</code></pre>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png" data-background-repeat="repeat" data-background-size="100px">
-						<h2>Tiled Backgrounds</h2>
-						<pre><code style="word-wrap: break-word;">&lt;section data-background="image.png" data-background-repeat="repeat" data-background-size="100px"&gt;</code></pre>
-					</section>
-					<section data-background-video="https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.mp4,https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.webm" data-background-color="#000000">
-						<div style="background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 20px;">
-							<h2>Video Backgrounds</h2>
-							<pre><code style="word-wrap: break-word;">&lt;section data-background-video="video.mp4,video.webm"&gt;</code></pre>
-						</div>
-					</section>
-				</section>
-
-				<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
-					<h2>Background Transitions</h2>
-					<p>
-						Different background transitions are available via the backgroundTransition option. This one's called "zoom".
-					</p>
-					<pre><code>Reveal.configure({ backgroundTransition: 'zoom' })</code></pre>
-				</section>
-
-				<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
-					<h2>Background Transitions</h2>
-					<p>
-						You can override background transitions per-slide.
-					</p>
-					<pre><code style="word-wrap: break-word;">&lt;section data-background-transition="zoom"&gt;</code></pre>
-				</section>
-
-				<section>
-					<h2>Pretty Code</h2>
-					<pre><code data-trim contenteditable>
-function linkify( selector ) {
-  if( supports3DTransforms ) {
-
-    var nodes = document.querySelectorAll( selector );
-
-    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-      var node = nodes[i];
-
-      if( !node.className ) {
-        node.className += ' roll';
-      }
-    }
-  }
-}
-					</code></pre>
-					<p>Code syntax highlighting courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
-				</section>
-
-				<section>
-					<h2>Marvelous List</h2>
-					<ul>
-						<li>No order here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-					</ul>
-				</section>
-
-				<section>
-					<h2>Fantastic Ordered List</h2>
-					<ol>
-						<li>One is smaller than...</li>
-						<li>Two is smaller than...</li>
-						<li>Three!</li>
-					</ol>
-				</section>
-
-				<section>
-					<h2>Tabular Tables</h2>
+					<h2>Three Operations Security problems</h2>
 					<table>
-						<thead>
-							<tr>
-								<th>Item</th>
-								<th>Value</th>
-								<th>Quantity</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Apples</td>
-								<td>$1</td>
-								<td>7</td>
-							<tr>
-							<tr>
-								<td>Lemonade</td>
-								<td>$2</td>
-								<td>18</td>
-							<tr>
-							<tr>
-								<td>Bread</td>
-								<td>$3</td>
-								<td>2</td>
-							<tr>
-						</tbody>
-					</table>
+					    <tr>
+                            <td><span style="color: #CC5600;">Visibility</span></td><td>too many systems doing too many things in too many ways. Need to see them all.</td>
+                        </tr>
+					    <tr>
+                            <td><span style="color: #CC5600;">Reachability</span></td><td>we don't have accounts or network accesses to all systems.</td>
+                        </tr>
+					    <tr>
+                            <td><span style="color: #CC5600;">Heterogeneity</span></td><td>every <em>snowflake</em> system is investigated in its own special way.</td>
+                        </tr>
+                    </table>
+                    </ol>
 				</section>
 
 				<section>
-					<h2>Clever Quotes</h2>
-					<p>
-						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;The nice thing about standards is that there are so many to choose from&rdquo;</q> and block:
-					</p>
-					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
-						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.&rdquo;
-					</blockquote>
-				</section>
-
-				<section>
-					<h2>Intergalactic Interconnections</h2>
-					<p>
-						You can link between slides internally,
-						<a href="#/2/3">like this</a>.
+					<h2>90% of investigations are simple</h2>
+                    <p align="left">- "Hey Systems, seen that <span style="color: #427ac6;">&lt;file|ip|process|user&gt;</span> lately?".<br />
+                    - "Nope"<br />
+                    - "Nope"<br />
+                    - "Nope"<br />
+                    - "Oh yeah, just yesterday!" <span style="color: #CC5600;">    &lt;--- OMG DEFCON 1!!!</span>
 					</p>
 				</section>
 
 				<section>
-					<h2>Speaker View</h2>
-					<p>There's a <a href="https://github.com/hakimel/reveal.js#speaker-notes">speaker view</a>. It includes a timer, preview of the upcoming slide as well as your speaker notes.</p>
-					<p>Press the <em>S</em> key to try it out.</p>
+                    <h2>The faster we run investigations,<br />the more we will investigate.</h2>
+                    <ul>
+                        <li>bob left the company, did we revoke all his accesses?</li>
+                        <li>massive libstuff1 vulnerability, is it used anywhere?</li>
+                        <li>found IP 13.37.66.66 brute forcing the VPN, check other nodes to see if it's connected</li>
+                        <li>jean-kevin put some AWS key on pastebin, is it configured anywhere?</li>
+                        <li>anyone remembers that weird host that was running an anonymous proxy?</li>
+                    </ul>
+                </section>
 
-					<aside class="notes">
-						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
-					</aside>
-				</section>
+                <section>
+                    <h2>We couldn't find a tool we liked,<br />so we built one</h2>
+                    <img src="statics/mig-logo-transparent.png" width="90%"/>
+                </section>
 
-				<section>
-					<h2>Export to PDF</h2>
-					<p>Presentations can be <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, here's an example:</p>
-					<iframe src="//www.slideshare.net/slideshow/embed_code/42840540" width="445" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:3px solid #666; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
-				</section>
+                <section>
+                    <h2>Digital forensics on steroids</h2>
+                    <span class="fragment">
+                        <p>Massively <span style="color: #CC5600;">Distributed</span> means Fast.</p>
+                    </span>
+                    <span class="fragment">
+                        <p>Simple to deploy and <span style="color: #CC5600;">Cross-Platform</span>.</p>
+                    </span>
+                    <span class="fragment">
+                        <p><span style="color: #CC5600;">Secure!</span> Don't trust until you verify.</p>
+                    </span>
+                    <span class="fragment">
+                        <p>Don't spook on data, respect <span style="color: #CC5600;">Privacy</span>.</p>
+                    </span>
+                </section>
 
-				<section>
-					<h2>Global State</h2>
-					<p>
-						Set <code>data-state="something"</code> on a slide and <code>"something"</code>
-						will be added as a class to the document element when the slide is open. This lets you
-						apply broader style changes, like switching the page background.
-					</p>
-				</section>
+                <section>
+                    <h2>Massively distributed</h2>
+                    <p>Central platform only passes messages around.<br />Investigation &amp; computation is done on the agents.</p>
+                    <p>Small infrastructure footprint<br />means easier to deploy and operate.</p>
+                </section>
 
-				<section data-state="customevent">
-					<h2>State Events</h2>
-					<p>
-						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
-					</p>
-					<pre><code class="javascript" data-trim contenteditable style="font-size: 18px;">
-Reveal.addEventListener( 'customevent', function() {
-	console.log( '"customevent" has fired' );
-} );
-					</code></pre>
-				</section>
+                <section>
+                    <h2>Simple to deploy</h2>
+                    <p>One static binary, no dependencies.<br />Configuration is built-in or deployed via provisioning.</p>
+                    <img src="statics/gophercolor.png" width="80%"/>
+                </section>
 
-				<section>
-					<h2>Take a Moment</h2>
-					<p>
-						Press B or . on your keyboard to pause the presentation. This is helpful when you're on stage and want to take distracting slides off the screen.
-					</p>
-				</section>
+                <section>
+                    <h2>As secure as PGP, so pretty good</h2>
+                    <pre><code data-trim>
+{
+  "name": "locate bad actor",
+  "target": "mode='daemon'",
+  "validfrom": "2015-05-27T00:29:29.038012Z",
+  "expireafter": "2015-05-27T00:30:59.038012Z",
+  "operations": [
+    { "module": "file",
+      "parameters": {
+        "searches": { "s1": { "paths":      ["/etc/cron.d"],
+                              "contents":   ["badpassword"]
+    }}}}
+  ],
+  "pgpsignatures": ["wsBcBAABCAAQBQJVZRAlCRCj1lIXO3..."],
+  "syntaxversion": 2
+}
+                    </code></pre>
+                </section>
 
-				<section>
-					<h2>Much more</h2>
-					<ul>
-						<li>Right-to-left support</li>
-						<li><a href="https://github.com/hakimel/reveal.js#api">Extensive JavaScript API</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js#auto-sliding">Auto-progression</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js#parallax-background">Parallax backgrounds</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js#keyboard-bindings">Custom keyboard bindings</a></li>
-					</ul>
-				</section>
+                <section>
+                    <h2>Privacy: I used to be a spy...</h2>
+                    <table>
+                        <tr>
+                            <td tyle="vertical-align:middle">
+                                <p>Doing forensics without full access to all data is hard, but not impossible.</p>
+                                <p>Agents do the work and return answers without raw data.</p>
+                            </td>
+                            <td>
+                                <img src="statics/burnnotice.jpg" width="100%"/>
+                            </td>
+                        </tr>
+                    </table>
+                </section>
 
-				<section style="text-align: left;">
-					<h1>THE END</h1>
-					<p>
-						- <a href="http://slides.com">Try the online editor</a> <br>
-						- <a href="https://github.com/hakimel/reveal.js">Source code &amp; documentation</a>
-					</p>
-				</section>
+                <section>
+                    <h2>Internals</h2>
+                    <p>REST API receives signed JSON messages<br />
+                    distributed to agents via RabbitMQ<br />
+                    and stored in a Postgres database.
+                    </p>
+                </section>
 
+                <section>
+                    <img src="statics/MIG-Arch-Diagram.png" width="80%"/>
+                </section>
+
+                <section>
+                    <h2>Demos!</h2>
+                    <img src="statics/foxhunt.gif" width="200%"/>
+                </section>
+
+                <section>
+                    <h2>Locating a cron job that contains a password</h2>
+                    <video width="150%" controls>
+                        <source data-src="statics/cronjob_demo.webm" type="video/webm" />
+                    </video>
+                </section>
+
+                <section>
+                    <h2>Got any private keys in those home folders?</h2>
+                    <video width="150%" controls>
+                        <source data-src="statics/privatekey_demo.webm" type="video/webm" />
+                    </video>
+                </section>
+
+                <section>
+                    <h2>Is that botnet IP connected anywhere?</h2>
+                    <video width="150%" controls>
+                        <source data-src="statics/netstat_ip_demo.webm" type="video/webm" />
+                    </video>
+                </section>
+
+                <section>
+                    <h2>Scan processes memories for a regex</h2>
+                    <video width="150%" controls>
+                        <source data-src="statics/memory_nginx_demo.webm" type="video/webm" />
+                    </video>
+                </section>
+
+                <section>
+                    <h2>Complex investigations:<br />write JSON directly</h2>
+                    <p>many examples at<br /><a href="https://github.com/mozilla/mig/tree/master/actions">https://github.com/mozilla/mig/tree/master/actions</a></p>
+                </section>
+
+                <section>
+                    <h2>Questions?</h2>
+                    <pre><span style="color: #00ff1e;">
+## ##                                     _.---._     .---.
+# # # /-\ ---||  |    /\         __...---' .---. '---'-.   '.
+#   #|   | / ||  |   /--\    .-''__.--' _.'( | )'.  '.  '._ :
+#   # \_/ ---| \_ \_/    \ .'__-'_ .--'' ._'---'_.-.  '.   '-'.
+     ###                         ~ -._ -._''---. -.    '-._   '.
+      # |\ |\    /---------|          ~ -.._ _ _ _ ..-_ '.  '-._''--.._
+      # | \| \  / |- |__ | |                       -~ -._  '-.  -. '-._''--.._.--''.
+     ###|  \  \/  ---__| | |                            ~ ~-.__     -._  '-.__   '. '.
+          #####                                               ~~ ~---...__ _    ._ .' '.
+          #      /\  --- /-\ |--|----                                    ~  ~--.....--~
+          # ### /--\  | |   ||-\  //
+          #####/    \ |  \_/ |  \//__
+                    </span></pre>
+                    <h3>http://mig.mozilla.org</h3>
+                </section>
 			</div>
 
 		</div>
@@ -376,7 +317,6 @@ Reveal.addEventListener( 'customevent', function() {
 					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/zoom-js/zoom.js', async: true },
 					{ src: 'plugin/notes/notes.js', async: true }
 				]
 			});
