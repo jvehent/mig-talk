@@ -41,23 +41,6 @@
 				</section>
 
                 <section>
-                    <h2>That unfortunate commit...</h2>
-                    <span class="fragment">
-                        <p>git commit -a . &amp;&amp; git push github master</p>
-                    </span>
-                    <span class="fragment">
-                        <img src="statics/githubfail.png" width="100%"/>
-                    </span>
-                    <span class="fragment">
-                        <img src="statics/fail.png" width="30%"/>
-                    </span>
-                    <span class="fragment">
-                        <p>$ mig file -path / -name "^\.boto$" -content "key_sample" -size "&lt;1k" -maxdepth 5</p>
-                    </span>
-                    
-                </section>
-
-                <section>
                     <h2><span style="color: #CC5600;">Julien Vehent</span>, <a href="https://wiki.mozilla.org/Security/OpSec">Operations Security</a></h2>
                     <p>
                         <table>
@@ -74,6 +57,23 @@
                             </tr>
                         </table>
                     </p>
+                </section>
+
+                <section>
+                    <h2>That unfortunate commit...</h2>
+                    <span class="fragment">
+                        <p>git commit -a . &amp;&amp; git push github master</p>
+                    </span>
+                    <span class="fragment">
+                        <img src="statics/githubfail.png" width="100%"/>
+                    </span>
+                    <span class="fragment">
+                        <img src="statics/fail.png" width="30%"/>
+                    </span>
+                    <span class="fragment">
+                        <p>$ mig file -path / -name "^\.boto$" -content "key_sample" -size "&lt;1k" -maxdepth 5</p>
+                    </span>
+                    
                 </section>
 
 				<section>
@@ -98,28 +98,27 @@
 				</section>
 
                 <section>
-                    <h2>Who needs an internal network</h2>
-                    <h3>when you have the Internet right there!</h3>
-                        <ul>
-                            <li>400+ active websites &amp; services</li>
-                            <li>a dozen offices, hundreds of remotees</li>
-                            <li>2 datacenters, tons of AWS accounts, heroku, rackspace, ...</li>
-                        </ul>
-                        <p>all loosely connected only when needed</p>
+                    <h2>Security at the perimeter doesn't work when your infrastructure lives all over the internet</h2>
+                    <ul>
+                        <li>400+ active websites &amp; services</li>
+                        <li>a dozen offices, hundreds of remotees</li>
+                        <li>2 datacenters, tons of AWS accounts, heroku, rackspace, ...</li>
+                    </ul>
+                    <p>all loosely connected only when needed</p>
                 </section>
 
 				<section>
-                    <h2>The practice of Incident Response<br />at Mozilla</h2>
+                    <h2>Incident Response at Mozilla</h2>
                     <p><img src="statics/haystack.jpg" width="80%" /></p>
 				</section>
 
                 <section>
-                    <h2>OpSec @ Mozilla</h2>
+                    <h2>Need for a strong<br />Operations Security group</h2>
                     <p><img src="statics/opsec_venn.png" width="60%" /></p>
                 </section>
 
 				<section>
-					<h2>Three Operations Security problems</h2>
+					<h2>3 OpSec problems</h2>
 					<table>
 					    <tr>
                             <td><span style="color: #CC5600;">Visibility</span></td><td>too many systems doing too many things in too many ways. Need to see them all.</td>
@@ -135,7 +134,7 @@
 				</section>
 
 				<section>
-					<h2>90% of investigations are simple</h2>
+					<h2>99% of investigations are simple</h2>
                     <p align="left">- "Hey Systems, seen that <span style="color: #427ac6;">&lt;file|ip|process|user&gt;</span> lately?".<br />
                     - "Nope"<br />
                     - "Nope"<br />
@@ -158,6 +157,44 @@
                 <section>
                     <h2>We couldn't find a tool we liked,<br />so we built one</h2>
                     <img src="statics/mig-logo-transparent.png" width="90%"/>
+                </section>
+
+                <section>
+                    <h2>Demos!</h2>
+                    <img src="statics/foxhunt.gif" width="200%"/>
+                </section>
+
+                <section>
+                    <h2>Locating a cron job that contains a password</h2>
+                    <video width="150%" controls>
+                        <source data-src="statics/cronjob_demo.webm" type="video/webm" />
+                    </video>
+                </section>
+
+                <section>
+                    <h2>Basic investigation workflow</h2>
+                    <img src="statics/MIG_investigation_workflow.svg" />
+                </section>
+
+                <section>
+                    <h2>Got any private keys in those home folders?</h2>
+                    <video width="150%" controls>
+                        <source data-src="statics/privatekey_demo.webm" type="video/webm" />
+                    </video>
+                </section>
+
+                <section>
+                    <h2>Is that botnet IP connected anywhere?</h2>
+                    <video width="150%" controls>
+                        <source data-src="statics/netstat_ip_demo.webm" type="video/webm" />
+                    </video>
+                </section>
+
+                <section>
+                    <h2>Scan processes memories for a regex</h2>
+                    <video width="150%" controls>
+                        <source data-src="statics/memory_nginx_demo.webm" type="video/webm" />
+                    </video>
                 </section>
 
                 <section>
@@ -237,43 +274,93 @@
                 </section>
 
                 <section>
-                    <h2>Demos!</h2>
-                    <img src="statics/foxhunt.gif" width="200%"/>
+                    <h2>Architecture of the Agent</h2>
+                    <pre>
+             +-------+   [ - - - - - - A G E N T - - - - - - - - - - - - ]
+             |command|+----&gt;(listener)
+             +-------+          |(2)
+               ^                V
+               |(1)         (parser)
+               |               +       [ m o d u l e s ]
++---------+    |            (3)|----------&gt; op1 +----------------+
+|SCHEDULER|+---+               |------------&gt; op2 +--------------|
+|         |<---+               |--------------&gt; op3 +------------|
++---------+    |               +----------------&gt; op4 +----------+
+               |                                                 V(4)
+               |(6)                                         (receiver)
+               |                                                 |
+               |                                                 V(5)
+               +                                             (publisher)
+             +-------+                                           /
+             |results|&lt;-----------------------------------------
+             +-------+
+                    </pre>
                 </section>
 
                 <section>
-                    <h2>Locating a cron job that contains a password</h2>
-                    <video width="150%" controls>
-                        <source data-src="statics/cronjob_demo.webm" type="video/webm" />
-                    </video>
+                    <h2>Security of the Agent</h2>
+                    <p>Agent only runs something if these conditions are met:<p>
+                    <p><ul>
+                        <li>action has a valid PGP signatures</li>
+                        <li>issued by trusted investigators</li>
+                        <li>who has ACL access to a given module</li>
+                    </ul></p>
+                    <p>multiple signatures required to run sensitive modules</p>
                 </section>
 
                 <section>
-                    <h2>Got any private keys in those home folders?</h2>
-                    <video width="150%" controls>
-                        <source data-src="statics/privatekey_demo.webm" type="video/webm" />
-                    </video>
+                    <h2>Security of the platform: API</h2>
+                    <p>REST API, uses <a href="https://github.com/jvehent/idfix">IdFix</a> PGP Token authentication</p>
+                    <pre>
+curl -H 'X-PGPAUTHORIZATION: 1;2015-05-28T15:04:05Z;111;owEBYQGe/pANAwAIAaP...'
+https://api.mig.example.net/api/v1/</pre>
+                    <p>PGP already needed to sign actions<br />Using it to auth on the API avoids needing another username/password/access key.</p>
+                </section>
+
+
+                <section>
+                    <h2>Security of the platform: Database</h2>
+                    <p>Typical PostgreSQL protections (TLS, credentials, GRANTs)</p>
+                    <p>Minimalistic attack surface:
+                    <ul>
+                        <li>Investigator keys are not stored in DB</li>
+                        <li>Results are in DB but never contain raw data, minimalize impact of leak</li>
+                    </ul>
+                    </p>
                 </section>
 
                 <section>
-                    <h2>Is that botnet IP connected anywhere?</h2>
-                    <video width="150%" controls>
-                        <source data-src="statics/netstat_ip_demo.webm" type="video/webm" />
-                    </video>
+                    <h2>Security of the platform: Scheduler</h2>
+                    <p>Somewhat complex code path to move messages around BUT:
+                        <ul>
+                            <li>No user interaction</li>
+                            <li>No way to tamper with signatures</li>
+                        </ul>
+                    </p>
+                    <p>If it breaks, we're sad, but it doesn't compromise systems across the infrastructure.</p>
                 </section>
 
                 <section>
-                    <h2>Scan processes memories for a regex</h2>
-                    <video width="150%" controls>
-                        <source data-src="statics/memory_nginx_demo.webm" type="video/webm" />
-                    </video>
+                    <h2>Security of the platform: <img src="statics/rabbitmq_logo_strap.png" /></h2>
+                    <p>Most exposed component (public).<br />Requires AMQP over TLS with client certs and credentials.<br />Tightly controlled RabbitMQ ACLs, but hard to write/audit.</p>
                 </section>
 
                 <section>
                     <h2>Complex investigations:<br />write JSON directly</h2>
-                    <p>many examples at<br /><a href="https://github.com/mozilla/mig/tree/master/actions">https://github.com/mozilla/mig/tree/master/actions</a></p>
+                    <p>many samples at<br /><a href="https://github.com/mozilla/mig/tree/master/actions">https://github.com/mozilla/mig/tree/master/actions</a></p>
+                    <p>Example: <a href="https://github.com/mozilla/mig/blob/master/actions/shellshock_iocs.json">Shellshock IOCs</a></p>
                 </section>
 
+                <section>
+                    <h2>MIG as a security pipeline</h2>
+                    <ul>
+                        <li>Vulnerability scanning with <a href="https://github.com/mozilla/mozoval">mozilla/mozoval</a></li>
+                        <li>Syscall auditing (auditd) with <a href="https://github.com/mozilla/audit-go">mozilla/audit-go</a></li>
+                        <li>Log inspections (OSSEC style)</li>
+                        <li>Network monitoring (distributed NSM) using GoPacket</li>
+                   </ul>
+                </section>
+                    
                 <section>
                     <h2>Questions?</h2>
                     <pre><span style="color: #00ff1e;">
