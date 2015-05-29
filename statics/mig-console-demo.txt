@@ -1,0 +1,31 @@
+create action
+setname HITB live demo
+settarget environment->>'os'='linux' AND tags->>'operator'='opsec'
+listagents
+
+addoperation memory
+hitb_memory_search
+name someprogram
+bytes abcdef123456
+matchall
+done
+done
+
+addoperation file
+hitb_file_search_name
+path /home
+name someprogram
+done
+hitb_file_search_hash
+path /home
+sha256 612824adf375cb7536f11d78d4fb4d4dc169ca275b207a9d5c9de621c83e0b0f
+done
+done
+
+json
+
+settimes now +60s
+launch
+
+results found
+foundanything
