@@ -38,9 +38,7 @@
 				</section>
 
                 <section>
-                    <p>
-                        Link to this presentation: <a href="https://goo.gl/OZ9ksE">https://goo.gl/qxrGsa</a>
-                    </p>
+                    <h2>Find this presentation online at<br /><strong style="color: #CC5600;">mig.ninja/lisa15</strong></h2>
                 </section>
 
                 <section>
@@ -68,7 +66,7 @@
                 </section>
 
                 <section>
-                    <img src="statics/mig-logo-transparent.png" width="70%"/>
+                    <img src="statics/mighub.png"/>
                 </section>
 
                 <section>
@@ -84,11 +82,11 @@
 
                 <section>
                     <h2>Goal #1: Detecting IOCs</h2>
-                    <img src="statics/mandiant-apt1.png" width="70%"/>
                     <pre><code><IndicatorItem id="1f3aff31-1155-4003-968c-40e5bd11e46e" condition="is">
     <Context document="FileItem" search="FileItem/Md5sum" type="mir" />
     <Content type="md5">3ce55c6994101faec00b5b7c2fee494f</Content>
 </IndicatorItem></pre></code>
+                    <img src="statics/mandiant-apt1.png" width="70%"/>
                 </section>
 
                 <section>
@@ -172,6 +170,29 @@
                 </section>
 
                 <section>
+                    <h2>Find which machines have a specific USB device connected</h2>
+                    <pre><code>mig file -matchany -path /sys/devices/ -name "^uevent$" \
+-content "PRODUCT=20a0/4107"</pre></code>
+                </section>
+
+                <section>
+                    <h2>Locating a device by its mac address</h2>
+                    <pre><code>mig netstat -nm 8c:70:5a:c8:be:50</pre></code>
+                </section>
+
+                <section>
+                    <h2>List endpoints that cannot ping a destination</h2>
+                    <pre><code>mig ping -t "name LIKE '%scl3%'" -show notfound \
+-d 10.22.75.57 -p icmp</pre></code>
+                </section>
+                    
+                <section>
+                    <h2>Find endpoints running ElasticSearch</h2>
+                    <pre><code>mig file -path /proc -name "^cmdline$" -maxdepth 2 \
+-content "[e]lasticsearch"</pre></code>
+                </section>
+
+                <section>
                     <h2>Measuring security compliance</h2>
                     <pre><code>{
     "module": "file",
@@ -200,7 +221,7 @@
                 </section>
 
                 <section>
-                    <h2>Scribe: Revisiting Vulnerability Management</h2>
+                    <h2>Mozilla/Scribe: Revisiting Vulnerability Management</h2>
                     <pre><code>{  "objects": [ {
             "object": "libnss3-package",
             "package": {
@@ -219,6 +240,13 @@
     ]
 }
                     </code></pre>
+                </section>
+
+                <section>
+                    <h2><a href="https://github.com/mozilla/scribe/">Scribe</a> finds bad packages</h2>
+                    <p>A vulnerability database, such as Ubuntu USN, or OpenVAS NVT, is converted into a JSON Scribe policy.</p>
+                    <p>Each MIG Agent runs the thousands of tests from the policy locally, and returns out-of-date package.</p>
+                    <p><a href="https://github.com/mozilla/mig/tree/master/actions/scribe">https://github.com/mozilla/mig/tree/master/actions/scribe</a></p>
                 </section>
 
                 <section>
@@ -315,8 +343,15 @@
                 </section>
 
                 <section>
-                    <h2>GO is Fantastic!</h2>
-                    <p>One static binary, no dependencies.<br />Configuration is built-in or deployed via provisioning.</p>
+                    <h2>Internals</h2>
+                    <img src="statics/Gator-JK.jpg"/>
+                </section>
+
+                <section>
+                    <h2>Go is Great!</h2>
+                    <p>Pleasant language to use, static typing catches most errors.</p>
+                    <p>Compiles to a single static binary, no dependencies.</p>
+                    <p>Configuration is built-in or deployed via provisioning.</p>
                     <img src="statics/gophercolor.png" width="80%"/>
                 </section>
 
