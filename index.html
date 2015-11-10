@@ -35,24 +35,29 @@
                     <h1><span style="color: #CC5600;">MIG</span><br /><span style="color: #CC5600;">M</span>ozilla <span style="color: #CC5600;">I</span>nvesti<span style="color: #CC5600;">G</span>ator</h1>
                     <img src="statics/mig-logo-transparent.png" width="70%"/>
 					<h3>Distributed and Real-Time Digital Forensics at the Speed of the Cloud</h3>
-					<p>
-						<small>
-                            <a href="https://jve.linuxwall.info">Julien Vehent</a> / <a href="http://twitter.com/jvehent">@jvehent</a> / <a href="https://goo.gl/OZ9ksE">https://goo.gl/OZ9ksE</a>
-                        </small>
-
-					</p>
 				</section>
 
                 <section>
-                    <h2><span style="color: #CC5600;">Julien Vehent</span>, <a href="https://wiki.mozilla.org/Security/OpSec">Operations Security</a></h2>
+                    <p>
+                        Link to this presentation: <a href="https://goo.gl/OZ9ksE">https://goo.gl/qxrGsa</a>
+                    </p>
+                </section>
+
+                <section>
+                    <h2>$whoami<br /><span style="color: #CC5600;">Julien Vehent</span>, <a href="https://wiki.mozilla.org/Security">Mozilla Security</a></h2>
                     <p>
                         <table>
                             <tr>
                                 <td>
                                     <ul>
-                                        <li>we respond to security investigations and incidents</li>
-                                        <li>we help developers design and implement security controls</li>
-                                        <li>we build tools &amp; services to keep Mozilla secure</li>
+                                        <li>Security tools &amp; architecture, Risk assessment, Threat modeling</a>
+                                        <li>SSL/TLS: <a href="https://wiki.mozilla.org/Security/Server_Side_TLS">Mozilla's Server Side TLS</a>, 
+                                            and <a href="https://github.com/jvehent/cipherscan">Cipherscan</a>,
+                                            the <a href="https://mozilla.github.io/server-side-tls/ssl-config-generator/">SSL Config Generator</a>
+                                            and a <a href="https://github.com/mozilla/TLS-Observer">TLS Observatory</a></li>
+                                        <li>SecDevOps stuff: <a href="https://github.com/mozilla/sops">mozilla/sops</a>,
+                                            <a href="https://jve.linuxwall.info/ressources/taf/haproxy-aws/">HAProxy in AWS</a></li>
+                                        <li><a href="https://wiki.mozilla.org/Security/Automation/Winter_Of_Security_2015">Mozilla Winter of Security</a></li>
                                     </ul>
                                 </td><td>
                                     <img src="statics/OpSec.png" width="100%"/>
@@ -63,7 +68,22 @@
                 </section>
 
                 <section>
-                    <h2>A post-APT1 security world</h2>
+                    <img src="statics/mig-logo-transparent.png" width="70%"/>
+                </section>
+
+                <section>
+                    <h2>Real-Time systems investigation</h2>
+                    <video width="100%" controls>
+                        <source data-src="statics/cronjob_demo.webm" type="video/webm" />
+                    </video>
+                </section>
+
+                <section>
+                    <img src="statics/mig_workflow.gif"/>
+                </section>
+
+                <section>
+                    <h2>Goal #1: Detecting IOCs</h2>
                     <img src="statics/mandiant-apt1.png" width="70%"/>
                     <pre><code><IndicatorItem id="1f3aff31-1155-4003-968c-40e5bd11e46e" condition="is">
     <Context document="FileItem" search="FileItem/Md5sum" type="mir" />
@@ -72,52 +92,38 @@
                 </section>
 
                 <section>
-                    <h2>That unfortunate commit...</h2>
-                    <span class="fragment">
+                    <h2>Goal #2: covering the small mistakes</h2>
                         <p>git commit -a . &amp;&amp; git push github master</p>
-                    </span>
-                    <span class="fragment">
                         <img src="statics/githubfail.png" width="100%"/>
-                    </span>
-                    <span class="fragment">
                         <img src="statics/fail.png" width="30%"/>
-                    </span>
-                    <span class="fragment">
-                        <p>$ mig file -path / -name "^\.boto$" -content "abcdef123456" -size "&lt;1k" -maxdepth 5</p>
-                    </span>
-                    
+                        <p>$ mig file -path / -name "^\.boto$" -content "abcdef123456"</p>
                 </section>
-
-				<section>
-					<h2>We're building a better Internet</h2>
-                    <p>
-                        <img src="statics/firefox_logo-only_RGB.png" width="30%"/>
-                        <img src="statics/hack.png" width="30%"/>
-                        <img src="statics/firefox-os-logo.png" width="30%"/>
-                    </p>
-				</section>
-
-				<section>
-					<h2>Strong startup/incubator mindset</h2>
-                    <p>
-                        <ul>
-                            <li>Experiment &amp; fail fast</li>
-                            <li>Minimalistic centralization</li>
-                            <li>Everyone can write and host a website...</li>
-                            <li>...sometimes using operational standards</li>
-                        </ul>
-                    </p>
-				</section>
 
                 <section>
-                    <h2>Security at the perimeter doesn't work when your infrastructure lives all over the internet</h2>
-                    <ul>
-                        <li>400+ active websites &amp; services</li>
-                        <li>a dozen offices, hundreds of remotees</li>
-                        <li>2 datacenters, tons of AWS accounts, heroku, rackspace, ...</li>
-                    </ul>
-                    <p>all loosely connected only when needed</p>
+                    <h2>Goal #3: Measuring security compliance</h2>
+                    <img src="statics/compliance.png"/>
                 </section>
+ 
+				<section>
+					<h2>Mozilla's startup mindset</h2>
+                    <table>
+                        <tr>
+                            <td>
+                                <p>
+                                    <ul>
+                                        <li>Experiment &amp; fail fast</li>
+                                        <li>Minimalistic centralization</li>
+                                        <li>Everyone can write and host a website...</li>
+                                        <li>...sometimes using operational standards</li>
+                                    </ul>
+                                </p>
+                            </td>
+                            <td>
+                                <img src="statics/firefox-os-logo.png" width="70%"/>
+                            </td>
+                        </tr>
+                    </table>
+				</section>
 
 				<section>
                     <h2>Incident Response at Mozilla</h2>
@@ -125,67 +131,23 @@
 				</section>
 
                 <section>
-                    <h2>Need for a strong<br />Operations Security group</h2>
-                    <p><img src="statics/opsec_venn.png" width="60%" /></p>
-                </section>
-
-				<section>
-					<h2>3 OpSec problems</h2>
-					<table>
-					    <tr>
-                            <td><span style="color: #CC5600;">Visibility</span></td><td>too many systems doing too many things in too many ways. Need to see them all.</td>
-                        </tr>
-					    <tr>
-                            <td><span style="color: #CC5600;">Reachability</span></td><td>we don't have accounts or network accesses to all systems.</td>
-                        </tr>
-					    <tr>
-                            <td><span style="color: #CC5600;">Heterogeneity</span></td><td>every <em>snowflake</em> system is investigated in its own special way.</td>
-                        </tr>
-                    </table>
-                    </ol>
-				</section>
-
-				<section>
-					<h2>99% of investigations are simple</h2>
-                    <p align="left">- "Hey Systems, seen that <span style="color: #427ac6;">&lt;file|ip|process|user&gt;</span> lately?".<br />
-                    - "Nope"<br />
-                    - "Nope"<br />
-                    - "Nope"<br />
-                    - "Oh yeah, just yesterday!" <span style="color: #CC5600;">    &lt;--- OMG DEFCON 1!!!</span>
-					</p>
-				</section>
-
-				<section>
-                    <h2>The faster we run investigations,<br />the more we will investigate.</h2>
-                    <ul>
-                        <li>bob left the company, did we revoke all his accesses?</li>
-                        <li>massive libstuff1 vulnerability, is it used anywhere?</li>
-                        <li>found IP 13.37.66.66 brute forcing the VPN, check other nodes to see if it's connected</li>
-                        <li>jean-kevin put some AWS key on pastebin, is it configured anywhere?</li>
-                        <li>anyone remembers that weird host that was running an anonymous proxy?</li>
-                    </ul>
+                    <h2>Security at the perimeter<br />does not work</h2>
+                    <h2 style="color: #CC5600;">When your infrastructure<br />lives all over the internet</h2>
                 </section>
 
                 <section>
-                    <h2>We couldn't find a tool we liked,<br />so we built one</h2>
-                    <img src="statics/mig-logo-transparent.png" width="90%"/>
+                    <h2>MIG's core principles</h2>
+                    <ul>
+                        <li>Fast &amp; Massively <span style="color: #CC5600;">Distributed</span> investigations.</li>
+                        <li>Simple to deploy across <span style="color: #CC5600;">all operating systems</span>.</li>
+                        <li><span style="color: #CC5600;">Strong Security!</span> All actions are signed and recorded.</li>
+                        <li>Do not retrieve raw data, respect <span style="color: #CC5600;">Privacy</span>.</li>
+                    </ul>
                 </section>
 
                 <section>
                     <h2>Demos!</h2>
                     <img src="statics/foxhunt.gif" width="200%"/>
-                </section>
-
-                <section>
-                    <h2>Locating a cron job that contains a password</h2>
-                    <video width="150%" controls>
-                        <source data-src="statics/cronjob_demo.webm" type="video/webm" />
-                    </video>
-                </section>
-
-                <section>
-                    <h2>Basic investigation workflow</h2>
-                    <img src="statics/MIG_investigation_workflow.svg" />
                 </section>
 
                 <section>
@@ -210,186 +172,57 @@
                 </section>
 
                 <section>
-                    <h2>Digital forensics on steroids</h2>
-                    <span class="fragment">
-                        <p>Massively <span style="color: #CC5600;">Distributed</span> means Fast.</p>
-                    </span>
-                    <span class="fragment">
-                        <p>Simple to deploy and <span style="color: #CC5600;">Cross-Platform</span>.</p>
-                    </span>
-                    <span class="fragment">
-                        <p><span style="color: #CC5600;">Secure!</span> Don't trust until you verify.</p>
-                    </span>
-                    <span class="fragment">
-                        <p>Don't spy on data, respect <span style="color: #CC5600;">Privacy</span>.</p>
-                    </span>
-                </section>
-
-                <section>
-                    <h2>Massively distributed</h2>
-                    <p>Central platform only passes messages around.<br />Investigation &amp; computation is done on the agents.</p>
-                    <p>Small infrastructure footprint<br />means easier to deploy and operate.</p>
-                </section>
-
-                <section>
-                    <h2>Simple to deploy</h2>
-                    <p>One static binary, no dependencies.<br />Configuration is built-in or deployed via provisioning.</p>
-                    <img src="statics/gophercolor.png" width="80%"/>
-                </section>
-
-                <section>
-                    <h2>As secure as PGP, so pretty good</h2>
-                    <pre><code data-trim>
-{
-  "name": "locate bad actor",
-  "target": "mode='daemon'",
-  "validfrom": "2015-05-27T00:29:29.038012Z",
-  "expireafter": "2015-05-27T00:30:59.038012Z",
-  "operations": [
-    { "module": "file",
-      "parameters": {
-        "searches": { "s1": { "paths":      ["/etc/cron.d"],
-                              "contents":   ["badpassword"]
-    }}}}
-  ],
-  "pgpsignatures": ["wsBcBAABCAAQBQJVZRAlCRCj1lIXO3..."],
-  "syntaxversion": 2
+                    <h2>Measuring security compliance</h2>
+                    <pre><code>{
+    "module": "file",
+    "parameters": {
+        "searches": {
+            "checkforverboselogging": {
+                "paths": [
+                    "/etc/ssh/sshd_config"
+                ],
+                "contents": [
+                    "(?i)^loglevel verbose$"
+                ]
+            },
+            "checkpasswordusageisoff": {
+                "paths": [
+                    "/etc/ssh/sshd_config"
+                ],
+                "contents": [
+                    "(?i)^passwordauthentication no$"
+                ]
+            }
+        }
+    }
 }
                     </code></pre>
                 </section>
 
                 <section>
-                    <h2>Privacy: I used to be a spy...</h2>
-                    <table>
-                        <tr>
-                            <td tyle="vertical-align:middle">
-                                <p>Doing forensics without full access to all data is hard, but not impossible.</p>
-                                <p>Agents do the work and return answers without raw data.</p>
-                            </td>
-                            <td>
-                                <img src="statics/burnnotice.jpg" width="100%"/>
-                            </td>
-                        </tr>
-                    </table>
-                </section>
-
-                <section>
-                    <h2>Internals</h2>
-                    <p>REST API receives signed JSON messages<br />
-                    distributed to agents via RabbitMQ<br />
-                    and stored in a Postgres database.
-                    </p>
-                </section>
-
-                <section>
-                    <img src="statics/MIG-Arch-Diagram.png" width="80%"/>
-                </section>
-
-                <section>
-                    <h2>Architecture of the Agent</h2>
-                    <pre>
-             +-------+   [ - - - - - - A G E N T - - - - - - - - - - - - ]
-             |command|+----&gt;(listener)
-             +-------+          |(2)
-               ^                V
-               |(1)         (parser)
-               |               +       [ m o d u l e s ]
-+---------+    |            (3)|----------&gt; op1 +----------------+
-|SCHEDULER|+---+               |------------&gt; op2 +--------------|
-|         |<---+               |--------------&gt; op3 +------------|
-+---------+    |               +----------------&gt; op4 +----------+
-               |                                                 V(4)
-               |(6)                                         (receiver)
-               |                                                 |
-               |                                                 V(5)
-               +                                             (publisher)
-             +-------+                                           /
-             |results|&lt;-----------------------------------------
-             +-------+
-                    </pre>
-                </section>
-
-                <section>
-                    <h2>Security of the Agent</h2>
-                    <p>Agent only runs something if these conditions are met:<p>
-                    <p><ol>
-                        <li>action has valid PGP signatures</li>
-                        <li>issued by trusted investigators</li>
-                        <li>with ACL accesses to a given module</li>
-                    </ul></p>
-                    <p>multiple signatures required to run sensitive modules</p>
-                </section>
-
-                <section>
-                    <h2>Agent ACLs</h2>
-                    <pre><code>var AGENTACL = [...]string{
-`{ "file": { "minimumweight": 2,
-    "investigators": {
-        "Alice": { "fingerprint": "E60892BB..", "weight": 2 },
-        "Bob": {   "fingerprint": "AD595634..", "weight": 2 } } }
-}`,
-`{ "memory": { "minimumweight": 3,
-    "investigators": {
-        "Alice": { "fingerprint": "E60892BB..", "weight": 2 },
-        "Eve": {   "fingerprint": "F6D781AE..", "weight": 1 } } } }
-}`,
+                    <h2>Scribe: Revisiting Vulnerability Management</h2>
+                    <pre><code>{  "objects": [ {
+            "object": "libnss3-package",
+            "package": {
+                "name": "libnss3:amd64"
+            }
+        }
+    ],
+    "tests": [ {
+            "test": "libnss3 test",
+            "object": "libnss3-package",
+            "evr": {
+                "operation": "<",
+                "value": "2:3.19.2"
+            }
+        }
+    ]
 }
-                    </pre></code>
+                    </code></pre>
                 </section>
 
                 <section>
-                    <h2>Agent ACLs</h2>
-                    <p>The weights of each investigator providing a valid signature are summed, and if the
-                    total weight is equal or higher than the minimum weight, the operation is considered valid.
-                    <p>
-                    <pre>
-        TotalWeight = Weight[Alice} + Weight[Bob]
-        if TotalWeight &gt;= MinimumWeight { run module }</pre>
-                </section>
-
-                <section>
-                    <h2>Security of the platform: API</h2>
-                    <p>REST API, uses <a href="https://github.com/jvehent/idfix">IdFix</a> PGP Token authentication</p>
-                    <pre>
-curl -H 'X-PGPAUTHORIZATION: 1;2015-05-28T15:04:05Z;111;owEBYQGe/pANAwAIAaP...'
-https://api.mig.example.net/api/v1/</pre>
-                    <p>PGP already needed to sign actions<br />A PGP Token avoids needing another username/password.</p>
-                </section>
-
-
-                <section>
-                    <h2>Security of the platform: Database</h2>
-                    <p>Typical PostgreSQL protections (TLS, credentials, GRANTs)</p>
-                    <p>Minimalistic attack surface:
-                    <ul>
-                        <li>Investigator keys are not stored in DB</li>
-                        <li>Results are in DB but never contain raw data, minimize impact of leak</li>
-                    </ul>
-                    </p>
-                </section>
-
-                <section>
-                    <h2>Security of the platform: Scheduler</h2>
-                    <p>Complex code path to move messages around BUT:
-                        <ul>
-                            <li>No user interaction</li>
-                            <li>No way to tamper with signatures</li>
-                        </ul>
-                    </p>
-                </section>
-
-                <section>
-                    <h2>Security of the platform: <img src="statics/rabbitmq_logo_strap.png" /></h2>
-                    <p>Most exposed component (public).<br />Requires AMQP over TLS with client certs and credentials.<br />Tightly controlled RabbitMQ ACLs, but hard to write/audit.</p>
-                </section>
-
-                <section>
-                    <h2>Complex investigations:<br />write JSON directly</h2>
-                    <p>many samples at<br /><a href="https://github.com/mozilla/mig/tree/master/actions">https://github.com/mozilla/mig/tree/master/actions</a></p>
-                    <p>Example: <a href="https://github.com/mozilla/mig/blob/master/actions/shellshock_iocs.json">Shellshock IOCs</a></p>
-                </section>
-
-                <section>
+                    <h2>Writing actions by hand is easy</h2>
                     <pre><code style="max-height: 700px;">{
   "name": "Shellshock IOCs (nginx and more)",
   "target": "environment->>'os' IN ('linux','darwin') AND mode='daemon'",
@@ -466,88 +299,48 @@ https://api.mig.example.net/api/v1/</pre>
                 </section>
 
                 <section>
-                    <h2>Visualizing results on a map</h2>
+                    <h2>Extra goodies: Visualizing results on a map</h2>
                     <img src="statics/resultsmap.png"/>
                 </section>
 
-                <section>
-                    <h2>A generic security platform</h2>
+				<section>
+                    <h2>The faster we run investigations,<br />the more we will investigate.</h2>
                     <ul>
-                        <li>Security Compliance</li>
-                        <li>Vulnerability scanning with <a href="https://github.com/mozilla/mozoval">mozilla/mozoval</a></li>
-                        <li>Syscall auditing (auditd) with <a href="https://github.com/mozilla/audit-go">mozilla/audit-go</a></li>
-                        <li>Log inspections (OSSEC style)</li>
-                        <li>Network monitoring (distributed NSM) using GoPacket</li>
-                   </ul>
+                        <li>bob left the company, did we revoke all his accesses?</li>
+                        <li>massive libstuff1 vulnerability, is it used anywhere?</li>
+                        <li>found IP 13.37.66.66 brute forcing the VPN, check other nodes to see if it's connected</li>
+                        <li>jean-kevin put some AWS key on pastebin, is it configured anywhere?</li>
+                        <li>anyone remembers that weird host that was running an anonymous proxy?</li>
+                    </ul>
                 </section>
-                    
+
                 <section>
-                    <h2>Measuring security compliance</h2>
-                    <pre><code>{
-    "module": "file",
-    "parameters": {
-        "searches": {
-            "checkforverboselogging": {
-                "paths": [
-                    "/etc/ssh/sshd_config"
-                ],
-                "contents": [
-                    "(?i)^loglevel verbose$"
-                ]
-            },
-            "checkpasswordusageisoff": {
-                "paths": [
-                    "/etc/ssh/sshd_config"
-                ],
-                "contents": [
-                    "(?i)^passwordauthentication no$"
-                ]
-            }
-        }
-    }
-}
-                    </code></pre>
+                    <h2>GO is Fantastic!</h2>
+                    <p>One static binary, no dependencies.<br />Configuration is built-in or deployed via provisioning.</p>
+                    <img src="statics/gophercolor.png" width="80%"/>
                 </section>
- 
+
                 <section>
-                    <h2>Storing security compliance</h2>
-                    <pre><code>{
-    "name":         "checkpasswordusageisoff",
-    "description":  "compliance check for ssh",
-    "target":       "server1.mydomain.example.net",
-    "utctimestamp": "2015-02-19T02:59:30.203004Z",
-    "compliance":   true,
-    "location":     "/etc/ssh/sshd_config",
-    "ref":          "syslowremote1",
-    "check": {
-        "test": {
-            "type":  "file",
-            "value": "(?i)^passwordauthentication no$"
-    }
-    "tags": {
-        "operator": "IT"
-    },
-    "link": "https://api.mig.example.net/api/v1/command?commandid=1424314751392165120",
-    "policy": {
-        "url":   "https://wiki.example.net/ComplianceDoc/IT+System+security+guidelines",
-        "name":  "system",
-        "level": "low"
-    }
-  }
-}
-                    </code></pre>
+                    <h2>Security of the Agent</h2>
+                    <p>Agent only runs something if these conditions are met:<p>
+                    <p><ol>
+                        <li>action has valid PGP signatures</li>
+                        <li>issued by trusted investigators</li>
+                        <li>with ACL accesses to a given module</li>
+                    </ul></p>
+                    <p>multiple signatures required to run sensitive modules</p>
                 </section>
- 
+
                 <section>
-                    <h2>Graphing security compliance</h2>
-                    <img src="statics/compliance.png"/>
+                    <h2>Agent ACLs</h2>
+                    <p>The weights of each investigator providing a valid signature are summed, and if the
+                    total weight is equal or higher than the minimum weight, the operation is considered valid.
+                    <p>
+                    <pre>
+        TotalWeight = Weight[Alice} + Weight[Bob]
+        if TotalWeight &gt;= MinimumWeight { run module }</pre>
                 </section>
- 
-                <section>
-                    <h2>tl;dr</h2>
-                    <h3>MIG is made of distributed agents securely queried from a central platform to investigate the state of large pools of systems remotely.</h3>
-                </section>
- 
+
                 <section>
                     <h2>Questions?</h2>
                     <pre><span style="color: #00ff1e;">
